@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
-class PostsController extends AppController
+class UsersController extends AppController
 {
 
   public function index()
   {
-    $posts = $this->Posts->find('all');
-    $this->set(compact('posts'));
+    $users = $this->Users->find('all');
+	$this->log($users,7);
+    $this->set(compact('users'));
   }
 
   public function view($id = null)
@@ -17,7 +18,6 @@ class PostsController extends AppController
     $post = $this->Posts->get($id, [
       'contain' => 'Comments'
     ]);
-    $this->autoRender = true; // この行を追加
     $this->set(compact('post'));
   }
 

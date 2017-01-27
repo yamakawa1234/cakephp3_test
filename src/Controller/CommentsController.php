@@ -16,6 +16,7 @@ class CommentsController extends AppController
       } else {
         // error
         $this->Flash->error('Comment Add Error!');
+        return $this->redirect(['controller'=>'Posts', 'action'=>'view', $comment->post_id]);
       }
     }
     $this->set(compact('comment'));
@@ -27,6 +28,8 @@ class CommentsController extends AppController
     $comment = $this->Comments->get($id);
     if ($this->Comments->delete($comment)) {
       $this->Flash->success('Comment Delete Success!');
+    $this->Flash->set('The user has been saved.');
+
     } else {
       $this->Flash->error('Comment Delete Error!');
     }
