@@ -17,7 +17,14 @@ class UsersTable extends Table
 	// );
   public function initialize(array $config)
   {
-    $this->addBehavior('Timestamp');
+    $this->addBehavior('Timestamp', [
+        'events' => [
+            'Model.beforeSave' => [
+                'create_date' => 'new',
+                'update_date' => 'always',
+            ]
+        ]
+    ]);
     // $this->hasMany('Error_logs', [
     //   'dependent' => true
     // ]);
@@ -26,16 +33,16 @@ class UsersTable extends Table
   public function validationDefault(Validator $validator)
   {
     $validator
-      ->notEmpty('user_name')
-      ->requirePresence('user_name')
-      ->notEmpty('passwd')
-      ->requirePresence('passwd')
-      ->add('passwd', [
-        'length' => [
-          'rule' => ['minLength', 6],
-          'message' => 'パスワードは6文字以上'
-        ]
-      ]);
+      ->notEmpty('name')
+      ->requirePresence('name');
+    //   ->notEmpty('passwd')
+    //   ->requirePresence('passwd')
+    //   ->add('passwd', [
+    //     'length' => [
+    //       'rule' => ['minLength', 6],
+    //       'message' => 'パスワードは6文字以上'
+    //     ]
+    //   ]);
     return $validator;
   }
 }

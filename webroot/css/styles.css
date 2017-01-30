@@ -45,6 +45,10 @@ header {
   float: right;
 }
 
+.pull-left {
+  float: left;
+}
+
 .input {
   overflow: hidden;
   font-size: 14px;
