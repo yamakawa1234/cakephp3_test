@@ -8,7 +8,6 @@ class UsersController extends AppController
     public function index()
     {
         $users = $this->Users->find('all');
-        $this->log($users, 7);
         $this->set(compact('users'));
     }
 
@@ -56,12 +55,26 @@ class UsersController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $post = $this->Posts->get($id);
-        if ($this->Posts->delete($post)) {
-            $this->Flash->success('Delete Success!');
+        $post = $this->Users->get($id);
+        if ($this->Users->delete($post)) {
+            $this->Flash->success('削除成功');
+            $this->Flash->set('The user has been saved.');
         } else {
-            $this->Flash->error('Delete Error!');
+            $this->Flash->error('削除失敗');
         }
         return $this->redirect(['action' => 'index']);
     }
+//    public function delete($id = null)
+//    {
+//        $this->request->allowMethod(['post', 'delete']);
+//        $comment = $this->Comments->get($id);
+//        if ($this->Comments->delete($comment)) {
+//            $this->Flash->success('Comment Delete Success!');
+//            $this->Flash->set('The user has been saved.');
+//
+//        } else {
+//            $this->Flash->error('Comment Delete Error!');
+//        }
+//        return $this->redirect(['controller'=>'Posts', 'action'=>'view', $comment->post_id]);
+//    }
 }

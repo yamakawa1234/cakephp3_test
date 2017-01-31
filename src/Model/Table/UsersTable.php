@@ -36,7 +36,7 @@ class UsersTable extends Table
       ->notEmpty('name')
       ->requirePresence('name');
     //   ->notEmpty('passwd')
-    //   ->requirePresence('passwd')
+    //   ->requirePresence('passwd')     u
     //   ->add('passwd', [
     //     'length' => [
     //       'rule' => ['minLength', 6],

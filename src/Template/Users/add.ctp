@@ -16,5 +16,5 @@ $this->assign('title', 'ユーザー登録');
 <?= $this->Form->input('limit_date'); ?>
 <?= $this->Form->input('user_id_col'); ?>
 <?= $this->Form->input('resource_path'); ?>
-<?= $this->Form->button('Add'); ?>
+<?= $this->Form->button('登録'); ?>
 <?= $this->Form->end(); ?>
