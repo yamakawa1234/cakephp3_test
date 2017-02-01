@@ -9,8 +9,8 @@ $this->assign('title', 'ユーザー情報編集');
 
 <?= $this->Form->create($post); ?>
 <?= $this->Form->input('user_id', array('type' => 'text')); ?>
-<?= $this->Form->input('name'); ?>
-<?= $this->Form->input('passwd'); ?>
+<?= $this->Form->input('username'); ?>
+<?= $this->Form->input('password'); ?>
 <?= $this->Form->input('mail'); ?>
 <?= $this->Form->input('status_code'); ?>
 <?= $this->Form->input('limit_date'); ?>

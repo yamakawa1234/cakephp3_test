@@ -23,8 +23,8 @@ $this->assign('title', 'ユーザー一覧');
 <?php foreach ($users as $user) : ?>
 <tr>
     <td><?= h($user->user_id); ?></td>
-    <td><?= h($user->name); ?></td>
-    <td><?= h($user->passwd); ?></td>
+    <td><?= h($user->username); ?></td>
+    <td><?= h($user->password); ?></td>
     <td><?= h($user->mail); ?></td>
     <td><?= h($user->status_code); ?></td>
 <!--    <td>--><?//= h($user->limit_date); ?><!--</td>-->
@@ -43,7 +43,6 @@ $this->assign('title', 'ユーザー一覧');
             ['confirm' => '削除してもよろしいですか？', 'class' => 'fs12']
         );
         ?></td>
-<!--    --><?//= $this->Html->link('[削除]', ['action'=>'delete', $user->user_id], ['class'=>'fs12']); ?><!--</td>-->
 </tr>
 <?php endforeach; ?>
 </table>

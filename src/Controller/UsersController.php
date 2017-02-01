@@ -4,6 +4,60 @@ namespace App\Controller;
 
 class UsersController extends AppController
 {
+    /**
+     * ログインページ
+     * @return type
+     */
+    public function login()
+    {
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Flash->error('ユーザー名かパスワードが間違ってまっせ');
+        }
+    }
+
+    /**
+     * ログアウト
+     * @return bool
+     */
+    public function logout()
+    {
+        $this->request->session()->destroy(); // セッションの破棄
+        return $this->redirect($this->Auth->logout()); // ログアウト処理
+    }
+
+//    //読み込むコンポーネントの指定
+//    public $components = array('Auth');
+//
+//    //どのアクションが呼ばれてもはじめに実行される関数
+//    public function beforeFilter()
+//    {
+//        parent::beforeFilter();
+//
+//        //未ログインでアクセスできるアクションを指定
+//        //これ以外のアクションへのアクセスはloginにリダイレクトされる規約になっている
+//        $this->Auth->allow('add', 'login');
+//    }
+//
+//    public function login()
+//    {
+//        if ($this->request->is('post')) {
+//            if ($this->Auth->login())
+//                return $this->redirect('index');
+//            else
+//                $this->Session->setFlash('ログイン失敗');
+//        }
+//    }
+//
+//    public function logout()
+//    {
+//        $this->Auth->logout();
+//        $this->redirect('login');
+//    }
 
     public function index()
     {

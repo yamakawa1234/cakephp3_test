@@ -17,6 +17,7 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 
+
 /**
  * Application Controller
  *
@@ -37,14 +38,34 @@ class AppController extends Controller
      *
      * @return void
      */
+//    public function initialize()
+//    {
+//        parent::initialize();
+//
+//        $this->viewBuilder()->layout('my_layout');
+//
+//        $this->loadComponent('RequestHandler');
+//        $this->loadComponent('Flash');
+//    }
     public function initialize()
     {
         parent::initialize();
-
-        $this->viewBuilder()->layout('my_layout');
-
-        $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        //認証
+        $this->loadComponent('Auth', [
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'mail',
+                        'password' => 'password'
+                    ]
+                ]
+            ],
+            'loginAction' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ]
+        ]);
     }
 
     /**
